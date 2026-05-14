@@ -37,14 +37,28 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  function syncMobileMenuIcons(open) {
+    if (!mobileToggle) return;
+    var iconMenu = qs("[data-icon-menu]", mobileToggle);
+    var iconClose = qs("[data-icon-close]", mobileToggle);
+    if (iconMenu) iconMenu.style.display = open ? "none" : "block";
+    if (iconClose) iconClose.style.display = open ? "block" : "none";
+  }
+
+  function setMobileMenuOpen(open) {
+    mobileOpen = open;
+    if (mobilePanel) mobilePanel.classList.toggle("is-open", open);
+    document.documentElement.classList.toggle("is-mobile-nav-open", open);
+    document.body.style.overflow = open ? "hidden" : "";
+    syncMobileMenuIcons(open);
+  }
+
   if (mobileToggle && mobilePanel) {
     mobileToggle.addEventListener("click", function () {
-      mobileOpen = !mobileOpen;
-      mobilePanel.classList.toggle("is-open", mobileOpen);
-      var iconMenu = qs("[data-icon-menu]", mobileToggle);
-      var iconClose = qs("[data-icon-close]", mobileToggle);
-      if (iconMenu) iconMenu.style.display = mobileOpen ? "none" : "block";
-      if (iconClose) iconClose.style.display = mobileOpen ? "block" : "none";
+      setMobileMenuOpen(!mobileOpen);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && mobileOpen) setMobileMenuOpen(false);
     });
   }
 
@@ -54,14 +68,7 @@
       a.addEventListener("click", function (e) {
         e.preventDefault();
         scrollToHash(href);
-        if (mobilePanel && mobileOpen) {
-          mobileOpen = false;
-          mobilePanel.classList.remove("is-open");
-          var iconMenu = qs("[data-icon-menu]", mobileToggle);
-          var iconClose = qs("[data-icon-close]", mobileToggle);
-          if (iconMenu) iconMenu.style.display = "block";
-          if (iconClose) iconClose.style.display = "none";
-        }
+        if (mobilePanel && mobileOpen) setMobileMenuOpen(false);
       });
     }
   });
@@ -69,6 +76,7 @@
   qsa("[data-scroll-to]").forEach(function (btn) {
     btn.addEventListener("click", function () {
       scrollToHash(btn.getAttribute("data-scroll-to"));
+      if (mobilePanel && mobileOpen) setMobileMenuOpen(false);
     });
   });
 
@@ -225,6 +233,186 @@
   qsa("[data-modal-close]").forEach(function (btn) {
     btn.addEventListener("click", closeModal);
   });
+
+  /* About ↔ Experts toggle — giữ chiều cao khung section trên desktop */
+  var aboutMain = qs('[data-about-view="main"]');
+  var aboutExperts = qs('[data-about-view="experts"]');
+  var aboutStage = qs(".about__stage");
+  var aboutShowExpertsBtn = qs("[data-about-show-experts]");
+  var aboutShowMainBtn = qs("[data-about-show-main]");
+
+  function syncAboutStageMinHeight() {
+    if (!aboutStage || !aboutMain) return;
+    if (window.innerWidth <= 1024) {
+      aboutStage.style.removeProperty("--about-stage-min-h");
+      return;
+    }
+    if (aboutMain.classList.contains("is-hidden")) return;
+    var h = aboutMain.offsetHeight;
+    if (h > 0) aboutStage.style.setProperty("--about-stage-min-h", h + "px");
+  }
+
+  function showAboutExperts(show) {
+    if (!aboutMain || !aboutExperts) return;
+    if (show) {
+      syncAboutStageMinHeight();
+      aboutMain.classList.add("is-hidden");
+      aboutExperts.classList.remove("is-hidden");
+      var aboutSec = qs("#about");
+      if (aboutSec) {
+        var headerH = header ? header.offsetHeight : 72;
+        var y = aboutSec.getBoundingClientRect().top + window.scrollY - headerH;
+        window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+      }
+    } else {
+      aboutExperts.classList.add("is-hidden");
+      aboutMain.classList.remove("is-hidden");
+      syncAboutStageMinHeight();
+    }
+    if (typeof lucide !== "undefined") {
+      lucide.createIcons();
+    }
+  }
+
+  if (aboutShowExpertsBtn) {
+    aboutShowExpertsBtn.addEventListener("click", function () {
+      showAboutExperts(true);
+    });
+  }
+  if (aboutShowMainBtn) {
+    aboutShowMainBtn.addEventListener("click", function () {
+      showAboutExperts(false);
+    });
+  }
+
+  if (aboutStage && aboutMain) {
+    window.addEventListener("resize", syncAboutStageMinHeight);
+    window.addEventListener("load", syncAboutStageMinHeight);
+    syncAboutStageMinHeight();
+  }
+
+  /* Chuyên gia — ≤1024px (tablet): chạm thẻ / ảnh (không chạm overlay) để mở/đóng chi tiết */
+  function isExpertTapLayout() {
+    return window.innerWidth <= 1024;
+  }
+
+  function syncExpertCardAria(card, open) {
+    card.setAttribute("aria-expanded", open ? "true" : "false");
+    var ov = qs(".expert-card__overlay", card);
+    if (ov) ov.setAttribute("aria-hidden", open ? "false" : "true");
+  }
+
+  function resetExpertCardsForDesktop() {
+    qsa(".expert-card").forEach(function (card) {
+      card.classList.remove("expert-card--open");
+      card.removeAttribute("aria-expanded");
+      var ov = qs(".expert-card__overlay", card);
+      if (ov) ov.setAttribute("aria-hidden", "true");
+    });
+  }
+
+  function bindExpertMobileToggle(card) {
+    if (!qs(".expert-card__media", card)) return;
+
+    var touchTapY = null;
+    var suppressClickFromTouch = false;
+
+    function toggleFromInteraction() {
+      if (!isExpertTapLayout()) return;
+      var nextOpen = !card.classList.contains("expert-card--open");
+      if (nextOpen) {
+        qsa(".expert-card.expert-card--open").forEach(function (other) {
+          if (other !== card) {
+            other.classList.remove("expert-card--open");
+            syncExpertCardAria(other, false);
+          }
+        });
+      }
+      card.classList.toggle("expert-card--open", nextOpen);
+      syncExpertCardAria(card, nextOpen);
+      if (nextOpen) {
+        var ov = qs(".expert-card__overlay", card);
+        if (ov) {
+          requestAnimationFrame(function () {
+            ov.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+          });
+        }
+      }
+    }
+
+    function targetIgnoresToggle(t) {
+      return !t || typeof t.closest !== "function" || t.closest(".expert-card__overlay");
+    }
+
+    card.addEventListener(
+      "touchstart",
+      function (e) {
+        if (!isExpertTapLayout()) return;
+        if (!e.touches || !e.touches.length) return;
+        touchTapY = e.touches[0].clientY;
+      },
+      { passive: true }
+    );
+
+    card.addEventListener(
+      "touchend",
+      function (e) {
+        if (!isExpertTapLayout()) return;
+        if (targetIgnoresToggle(e.target)) return;
+        if (touchTapY === null) return;
+        var endY = e.changedTouches && e.changedTouches.length ? e.changedTouches[0].clientY : touchTapY;
+        if (Math.abs(endY - touchTapY) > 14) {
+          touchTapY = null;
+          return;
+        }
+        touchTapY = null;
+        suppressClickFromTouch = true;
+        setTimeout(function () {
+          suppressClickFromTouch = false;
+        }, 480);
+        e.preventDefault();
+        toggleFromInteraction();
+      },
+      { passive: false }
+    );
+
+    card.addEventListener("touchcancel", function () {
+      touchTapY = null;
+    });
+
+    card.addEventListener("click", function (e) {
+      if (!isExpertTapLayout()) return;
+      if (suppressClickFromTouch) return;
+      if (targetIgnoresToggle(e.target)) return;
+      toggleFromInteraction();
+    });
+
+    card.addEventListener("keydown", function (e) {
+      if (!isExpertTapLayout()) return;
+      if (e.key !== "Enter" && e.key !== " ") return;
+      var overlay = qs(".expert-card__overlay", card);
+      if (overlay && overlay.contains(document.activeElement)) return;
+      if (e.target !== card) return;
+      e.preventDefault();
+      toggleFromInteraction();
+    });
+  }
+
+  qsa(".expert-card").forEach(function (card) {
+    bindExpertMobileToggle(card);
+  });
+
+  function onExpertBpChange() {
+    if (!isExpertTapLayout()) {
+      resetExpertCardsForDesktop();
+      return;
+    }
+    qsa(".expert-card").forEach(function (card) {
+      syncExpertCardAria(card, card.classList.contains("expert-card--open"));
+    });
+  }
+  onExpertBpChange();
+  window.addEventListener("resize", onExpertBpChange);
 
   if (typeof lucide !== "undefined") {
     lucide.createIcons();

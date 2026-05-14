@@ -2,12 +2,12 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title th:text="${page.pageTitle}">Nhôm Kính An Bình — Hải Phòng</title>
   <link rel="stylesheet" th:href="@{/css/app.css}" href="/css/app.css"/>
 </head>
 <body>
-<div class="site-root">
+<div class="site-root site-premium">
   <header class="header">
     <div class="header__inner">
       <div class="header__bar">
@@ -60,51 +60,74 @@
     <div class="hero__slide" data-hero-slide="2">
       <img alt="hero" src="https://images.unsplash.com/photo-1762893287458-dcb44f653ffa?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
     </div>
+    <div class="hero__ambient" aria-hidden="true"></div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <div class="hero__inner">
-        <div class="hero__badge">
-          <span class="hero__badge-dot"></span>
-          <span>Xưởng nhôm kính chuyên nghiệp</span>
-        </div>
-        <h1 class="hero__title">
-          NHÔM KÍNH AN BÌNH <br class="br-desktop"/>
-          <span class="hero__gradient">Vững chắc</span> mọi công trình
-        </h1>
-        <p class="hero__sub">
-          Chuyên tư vấn, thiết kế và thi công các hạng mục nhôm kính cao cấp, cửa nhôm Xingfa, kính cường lực tại Hải Phòng và các tỉnh lân cận.
-        </p>
-        <div class="hero__actions">
-          <button type="button" class="hero__btn-primary" data-scroll-to="#quote">
-            Nhận báo giá ngay <i data-lucide="chevron-right" class="lucide lucide--18"></i>
-          </button>
-          <button type="button" class="hero__btn-secondary" data-scroll-to="#projects">
-            <i data-lucide="play" class="lucide lucide--16"></i> Xem công trình thực tế
-          </button>
-        </div>
-        <div class="hero__stats">
-          <div class="hero__stat">
-            <div class="hero__stat-icon"><i data-lucide="award" class="lucide lucide--18"></i></div>
-            <div>
-              <div class="hero__stat-val">10+</div>
-              <div class="hero__stat-lab">Năm kinh nghiệm</div>
+      <div class="hero__layout">
+        <div class="hero__main">
+          <div class="hero__inner">
+            <div class="hero__badge">
+              <span class="hero__badge-dot"></span>
+              <span>Xưởng nhôm kính chuyên nghiệp</span>
+            </div>
+            <h1 class="hero__title">
+              NHÔM KÍNH AN BÌNH <br class="br-desktop"/>
+              <span class="hero__tagline"><span class="hero__gradient">Vững chắc</span> mọi công trình</span>
+            </h1>
+            <p class="hero__sub">
+              Chuyên tư vấn, thiết kế và thi công các hạng mục nhôm kính cao cấp, cửa nhôm Xingfa, kính cường lực tại Hải Phòng và các tỉnh lân cận.
+            </p>
+            <div class="hero__actions">
+              <button type="button" class="hero__btn-primary" data-scroll-to="#quote">
+                Nhận báo giá ngay <i data-lucide="chevron-right" class="lucide lucide--18"></i>
+              </button>
+              <button type="button" class="hero__btn-secondary" data-scroll-to="#projects">
+                <i data-lucide="play" class="lucide lucide--16"></i> Xem công trình thực tế
+              </button>
             </div>
           </div>
-          <div class="hero__stat">
-            <div class="hero__stat-icon"><i data-lucide="building-2" class="lucide lucide--18"></i></div>
-            <div>
-              <div class="hero__stat-val">500+</div>
-              <div class="hero__stat-lab">Công trình</div>
+          <div class="hero__stats">
+            <div class="hero__stat">
+              <div class="hero__stat-icon"><i data-lucide="award" class="lucide lucide--18"></i></div>
+              <div>
+                <div class="hero__stat-val">10+</div>
+                <div class="hero__stat-lab">Năm kinh nghiệm</div>
+              </div>
             </div>
-          </div>
-          <div class="hero__stat">
-            <div class="hero__stat-icon"><i data-lucide="map-pin" class="lucide lucide--18"></i></div>
-            <div>
-              <div class="hero__stat-val">Toàn quốc</div>
-              <div class="hero__stat-lab">Thi công</div>
+            <div class="hero__stat">
+              <div class="hero__stat-icon"><i data-lucide="building-2" class="lucide lucide--18"></i></div>
+              <div>
+                <div class="hero__stat-val">500+</div>
+                <div class="hero__stat-lab">Công trình</div>
+              </div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-icon"><i data-lucide="map-pin" class="lucide lucide--18"></i></div>
+              <div>
+                <div class="hero__stat-val">Toàn quốc</div>
+                <div class="hero__stat-lab">Thi công</div>
+              </div>
             </div>
           </div>
         </div>
+        <aside class="hero__panel" aria-label="Cam kết dịch vụ">
+          <div class="hero__panel-title">Cam kết của An Bình</div>
+          <ul class="hero__panel-list">
+            <li>
+              <i data-lucide="shield-check" class="lucide lucide--20"></i>
+              <span>Bảo hành có phiếu, điều khoản rõ ràng — khách an tâm theo dõi công trình.</span>
+            </li>
+            <li>
+              <i data-lucide="ruler" class="lucide lucide--20"></i>
+              <span>Khảo sát &amp; đo đạc tại hiện trường trước khi báo giá chi tiết.</span>
+            </li>
+            <li>
+              <i data-lucide="package" class="lucide lucide--20"></i>
+              <span>Nhôm Xingfa, phụ kiện Kinlong đồng bộ — đúng chủng loại, đúng tiến độ.</span>
+            </li>
+          </ul>
+          <div class="hero__panel-foot">Hải Phòng · Thi công liên tỉnh theo yêu cầu</div>
+        </aside>
       </div>
     </div>
     <div class="hero__dots">
@@ -116,53 +139,107 @@
 
   <section class="about" id="about">
     <div class="about__wrap">
-      <div class="about__grid">
-        <div class="about__img-wrap">
-          <div class="about__img-frame">
-            <img alt="Xưởng sản xuất nhôm kính An Bình" src="https://images.unsplash.com/photo-1599452547462-82d7f34e9167?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
-          </div>
-          <div class="about__float">
-            <div class="about__float-num">500+</div>
-            <div class="about__float-lab">Công trình hoàn thành</div>
+      <div class="about__stage">
+        <div class="about__view" data-about-view="main">
+          <div class="about__grid">
+            <div class="about__img-wrap">
+              <div class="about__img-frame">
+                <img alt="Xưởng sản xuất nhôm kính An Bình" src="https://images.unsplash.com/photo-1599452547462-82d7f34e9167?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+              </div>
+              <div class="about__float">
+                <div class="about__float-num">500+</div>
+                <div class="about__float-lab">Công trình hoàn thành</div>
+              </div>
+            </div>
+            <div class="about__content">
+              <div class="pill"><span>Về chúng tôi</span></div>
+              <h2 class="about__h2">Chuyên gia nhôm kính <em>uy tín</em> tại Hải Phòng</h2>
+              <p class="about__p">
+                Với hơn 10 năm kinh nghiệm thi công tại TP. Hải Phòng và các khu vực lân cận, Nhôm Kính An Bình tự hào mang đến những sản phẩm bền vững, thẩm mỹ vượt trội cho mọi công trình.
+              </p>
+              <div class="about__list about__list--grid">
+                <div class="about__item">
+                  <div class="about__icon-box"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
+                  <div>
+                    <div class="about__item-title">Đội ngũ tay nghề cao</div>
+                    <div class="about__item-desc">Thợ thi công được đào tạo bài bản, kinh nghiệm 10+ năm thực chiến.</div>
+                  </div>
+                </div>
+                <div class="about__item">
+                  <div class="about__icon-box"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
+                  <div>
+                    <div class="about__item-title">Nhôm Xingfa chính hãng</div>
+                    <div class="about__item-desc">Sử dụng 100% vật liệu nhôm Xingfa, PMI, Topal nhập khẩu chính hãng.</div>
+                  </div>
+                </div>
+                <div class="about__item">
+                  <div class="about__icon-box"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
+                  <div>
+                    <div class="about__item-title">Thi công đúng tiến độ</div>
+                    <div class="about__item-desc">Cam kết bàn giao đúng thời hạn, không phát sinh chi phí ngoài hợp đồng.</div>
+                  </div>
+                </div>
+                <div class="about__item">
+                  <div class="about__icon-box"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
+                  <div>
+                    <div class="about__item-title">Bảo hành chuyên nghiệp</div>
+                    <div class="about__item-desc">Bảo hành 5 năm cho phụ kiện và 10 năm cho khung nhôm kính.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="about__btn-row">
+                <button type="button" class="about__btn about__btn--outline" data-about-show-experts>
+                  <i data-lucide="users" class="lucide lucide--18"></i>
+                  Thông tin các chuyên gia
+                </button>
+                <button type="button" class="about__btn" data-scroll-to="#quote">Liên hệ tư vấn ngay</button>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="about__content">
-          <div class="pill"><span>Về chúng tôi</span></div>
-          <h2 class="about__h2">Chuyên gia nhôm kính <em>uy tín</em> tại Hải Phòng</h2>
-          <p class="about__p">
-            Với hơn 10 năm kinh nghiệm thi công tại TP. Hải Phòng và các khu vực lân cận, Nhôm Kính An Bình tự hào mang đến những sản phẩm bền vững, thẩm mỹ vượt trội cho mọi công trình.
-          </p>
-          <div class="about__list">
-            <div class="about__item">
-              <div class="about__icon-box"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
-              <div>
-                <div class="about__item-title">Đội ngũ tay nghề cao</div>
-                <div class="about__item-desc">Thợ thi công được đào tạo bài bản, kinh nghiệm 10+ năm thực chiến.</div>
-              </div>
+
+        <div class="about__view about__view--experts is-hidden" data-about-view="experts">
+          <div class="about-experts">
+            <button type="button" class="about-experts__back" data-about-show-main>
+              <i data-lucide="arrow-left" class="lucide lucide--18"></i>
+              Quay lại giới thiệu
+            </button>
+            <div class="about-experts__intro">
+              <div class="pill"><span>Đội ngũ</span></div>
+              <h2 class="about__h2">Chuyên gia <em>dẫn dắt</em> chất lượng</h2>
+              <p class="about__p about-experts__lead">Hai chuyên gia chủ chốt — <strong class="about-experts__hint-desktop">di chuột lên ảnh</strong><strong class="about-experts__hint-mobile">chạm ảnh</strong> để xem vai trò và chuyên môn chi tiết.</p>
             </div>
-            <div class="about__item">
-              <div class="about__icon-box"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
-              <div>
-                <div class="about__item-title">Nhôm Xingfa chính hãng</div>
-                <div class="about__item-desc">Sử dụng 100% vật liệu nhôm Xingfa, PMI, Topal nhập khẩu chính hãng.</div>
-              </div>
-            </div>
-            <div class="about__item">
-              <div class="about__icon-box"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
-              <div>
-                <div class="about__item-title">Thi công đúng tiến độ</div>
-                <div class="about__item-desc">Cam kết bàn giao đúng thời hạn, không phát sinh chi phí ngoài hợp đồng.</div>
-              </div>
-            </div>
-            <div class="about__item">
-              <div class="about__icon-box"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
-              <div>
-                <div class="about__item-title">Bảo hành chuyên nghiệp</div>
-                <div class="about__item-desc">Bảo hành 5 năm cho phụ kiện và 10 năm cho khung nhôm kính.</div>
-              </div>
+            <div class="about-experts__grid">
+              <article class="expert-card" tabindex="0" aria-expanded="false">
+                <div class="expert-card__media">
+                  <img class="expert-card__img" alt="CEO Founder — điều hành và kỹ thuật" draggable="false" th:src="@{/images/experts/expert-1.png}" src="/images/experts/expert-1.png"/>
+                  <div class="expert-card__overlay" aria-hidden="true">
+                    <h3 class="expert-card__name">CEO — Founder</h3>
+                    <p class="expert-card__role">Thợ chính · Thi công lắp đặt · Đo đạc · Kế toán</p>
+                    <ul class="expert-card__details">
+                      <li><strong>Vai trò:</strong> Thợ chính xưởng, trực tiếp thi công lắp đặt và đo đạc hiện trường.</li>
+                      <li><strong>Hậu cần:</strong> Theo dõi kế toán nội bộ — báo giá, chi phí và đối soát số liệu công trình.</li>
+                      <li><strong>Điều hành:</strong> Đồng sáng lập (foundation); định hướng kỹ thuật, tiến độ và chất lượng lắp đặt.</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+              <article class="expert-card" tabindex="0" aria-expanded="false">
+                <div class="expert-card__media">
+                  <img class="expert-card__img" alt="Founder Chủ tịch — phát triển khách hàng" draggable="false" th:src="@{/images/experts/expert-2.png}" src="/images/experts/expert-2.png"/>
+                  <div class="expert-card__overlay" aria-hidden="true">
+                    <h3 class="expert-card__name">Founder — Chủ tịch</h3>
+                    <p class="expert-card__role">Phát triển khách hàng · Kinh doanh · Đối ngoại</p>
+                    <ul class="expert-card__details">
+                      <li><strong>Nền tảng:</strong> Đồng sáng lập xưởng, đại diện pháp nhân và định hướng chiến lược.</li>
+                      <li><strong>Chức danh:</strong> Chủ tịch — chịu trách nhiệm quan hệ đối tác và phát triển thị trường.</li>
+                      <li><strong>Thế mạnh:</strong> Chuyên tìm kiếm khách hàng, chăm sóc hợp đồng và mở rộng nguồn việc.</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
-          <button type="button" class="about__btn" data-scroll-to="#quote">Liên hệ tư vấn ngay</button>
         </div>
       </div>
     </div>
@@ -170,13 +247,15 @@
 
   <section class="products" id="products">
     <div class="products__wrap">
-      <div class="section-head">
-        <div class="pill"><span>Danh mục sản phẩm</span></div>
-        <h2>Sản phẩm &amp; Dịch vụ</h2>
-        <p>Đầy đủ giải pháp nhôm kính cho mọi loại công trình, từ dân dụng đến thương mại.</p>
+      <div class="section-head section-head--split">
+        <div class="section-head__main">
+          <div class="pill"><span>Danh mục sản phẩm</span></div>
+          <h2>Sản phẩm &amp; Dịch vụ</h2>
+        </div>
+        <p class="section-head__lede">Đầy đủ giải pháp nhôm kính cho mọi loại công trình, từ dân dụng đến thương mại — thiết kế gọn gàng, bền vững theo thời gian.</p>
       </div>
       <div class="products__grid">
-        <article class="product-card">
+        <article class="product-card product-card--featured">
           <div class="product-card__media">
             <img class="product-card__img" alt="Cửa nhôm Xingfa" src="https://images.unsplash.com/photo-1757264119066-2f627c6a6f03?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
             <span class="product-card__tag product-card__tag--default">Phổ biến</span>
@@ -228,14 +307,16 @@
 
   <section class="projects" id="projects">
     <div class="projects__wrap">
-      <div class="section-head section-head--proj">
-        <div class="pill"><span>Công trình tiêu biểu</span></div>
-        <h2>Những công trình nổi bật</h2>
-        <p>Hơn 500 công trình được thi công trên toàn quốc, từ biệt thự đến cao ốc thương mại.</p>
+      <div class="section-head section-head--split section-head--proj">
+        <div class="section-head__main">
+          <div class="pill"><span>Công trình tiêu biểu</span></div>
+          <h2>Những công trình nổi bật</h2>
+        </div>
+        <p class="section-head__lede">Hơn 500 công trình đã thi công trên toàn quốc — từ biệt thự cao cấp đến cao ốc thương mại và khu công nghiệp.</p>
       </div>
 
       <div class="projects-desktop">
-        <article class="proj-card">
+        <article class="proj-card proj-card--hero">
           <img class="proj-card__img" alt="" src="https://images.unsplash.com/photo-1757264119066-2f627c6a6f03?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
           <div class="proj-card__grad"></div>
           <div class="proj-card__body">
@@ -484,12 +565,14 @@
 
   <section class="estimate" id="estimate" data-estimator>
     <div class="estimate__inner">
-      <div class="estimate__head">
-        <div class="estimate__pill">
-          <i data-lucide="calculator" class="lucide lucide--16"></i> CÔNG CỤ TÍNH TOÁN
+      <div class="estimate__head estimate__head--split">
+        <div class="estimate__head-main">
+          <div class="estimate__pill">
+            <i data-lucide="calculator" class="lucide lucide--16"></i> CÔNG CỤ TÍNH TOÁN
+          </div>
+          <h2>Dự toán chi phí thi công</h2>
         </div>
-        <h2>Dự toán chi phí thi công</h2>
-        <p>Nhập diện tích công trình của bạn để nhận báo giá tạm tính ngay lập tức.</p>
+        <p class="estimate__head-lede">Nhập diện tích để có con số tham khảo ngay — sau đó đội ngũ sẽ hiệu chỉnh theo hiện trường và loại phụ kiện.</p>
       </div>
       <div class="estimate__card">
         <div class="estimate__decoration"></div>
@@ -532,9 +615,9 @@
   <section class="quote" id="quote">
     <div class="quote__wrap">
       <div class="quote__grid">
-        <div>
+        <div class="quote__intro">
           <div class="pill"><span>Nhận báo giá</span></div>
-          <h2 class="about__h2" style="margin-bottom:16px">Báo giá miễn phí <em style="font-style:normal;color:#F97316">trong 24 giờ</em></h2>
+          <h2 class="quote__title">Báo giá miễn phí <em class="quote__title-accent">trong 24 giờ</em></h2>
           <p class="quote__intro-p">
             Điền thông tin để nhận báo giá chi tiết từ đội ngũ tư vấn chuyên nghiệp. Hoàn toàn miễn phí, không ràng buộc.
           </p>
@@ -638,9 +721,12 @@
 
   <section class="partners">
     <div class="partners__wrap">
-      <div class="partners__head">
-        <p class="partners__label">Đối tác &amp; Thương hiệu</p>
-        <h2>Vật liệu từ thương hiệu <span style="color:#F97316">uy tín toàn cầu</span></h2>
+      <div class="partners__head partners__head--split">
+        <div class="partners__head-main">
+          <p class="partners__label">Đối tác &amp; Thương hiệu</p>
+          <h2>Vật liệu từ thương hiệu <span class="partners__head-accent">uy tín toàn cầu</span></h2>
+        </div>
+        <p class="partners__head-lede">Hệ vật liệu nhập khẩu đồng bộ giúp cửa kính vận hành êm, kín khít và giữ vẻ đẹp lâu dài.</p>
       </div>
       <div class="partners__grid">
         <div class="partner-card"><div class="partner-card__logo">XI</div><div class="partner-card__name">Xingfa</div><div class="partner-card__desc">Hệ nhôm cao cấp</div></div>

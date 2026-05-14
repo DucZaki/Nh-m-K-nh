@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title th:text="${page.pageTitle}">Nhôm Kính An Bình — Hải Phòng</title>
+  <link rel="stylesheet" th:href="@{/css/app.css}" href="/css/app.css"/>
+</head>
+<body>
+<div class="site-root site-premium">
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__bar">
+        <a href="#home" class="header__logo">
+          <div class="header__logo-mark">AB</div>
+          <div>
+            <div class="header__logo-title" th:text="${page.brandTitle}">AN BÌNH</div>
+            <div class="header__logo-sub" th:text="${page.brandSubtitle}">Nhôm Kính Hải Phòng</div>
+          </div>
+        </a>
+        <nav class="header__nav hidden-mobile">
+          <a href="#home">Trang chủ</a>
+          <a href="#about">Giới thiệu</a>
+          <a href="#products">Sản phẩm</a>
+          <a href="#projects">Công trình</a>
+          <a href="#quote">Báo giá</a>
+          <a href="#contact">Liên hệ</a>
+        </nav>
+        <a th:href="${page.hotlineTelHref}" href="tel:" class="header__cta hidden-mobile">
+          <i data-lucide="phone" class="lucide lucide--16"></i>
+          <span th:text="${page.hotlineDisplay}">0984 936 989</span>
+        </a>
+        <button type="button" class="header__toggle show-mobile-only" data-mobile-toggle aria-label="Menu">
+          <i data-lucide="menu" class="lucide lucide--24" data-icon-menu></i>
+          <i data-lucide="x" class="lucide lucide--24" data-icon-close style="display:none"></i>
+        </button>
+      </div>
+    </div>
+    <div class="header__mobile" data-mobile-panel>
+      <a href="#home">Trang chủ</a>
+      <a href="#about">Giới thiệu</a>
+      <a href="#products">Sản phẩm</a>
+      <a href="#projects">Công trình</a>
+      <a href="#quote">Báo giá</a>
+      <a href="#contact">Liên hệ</a>
+      <a th:href="${page.hotlineTelHref}" href="tel:" class="header__mobile-cta">
+        <i data-lucide="phone" class="lucide lucide--16"></i>
+        Gọi ngay: <span th:text="${page.hotlineDisplay}">0984 936 989</span>
+      </a>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero__slide is-active" data-hero-slide="0">
+      <img alt="hero" src="https://images.unsplash.com/photo-1776617130189-f56b5ac44534?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+    </div>
+    <div class="hero__slide" data-hero-slide="1">
+      <img alt="hero" src="https://images.unsplash.com/photo-1636142500824-564df0c3846a?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+    </div>
+    <div class="hero__slide" data-hero-slide="2">
+      <img alt="hero" src="https://images.unsplash.com/photo-1762893287458-dcb44f653ffa?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+    </div>
+    <div class="hero__ambient" aria-hidden="true"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <div class="hero__layout">
+        <div class="hero__main">
+          <div class="hero__inner">
+            <div class="hero__badge">
+              <span class="hero__badge-dot"></span>
+              <span>Xưởng nhôm kính chuyên nghiệp</span>
+            </div>
+            <h1 class="hero__title">
+              NHÔM KÍNH AN BÌNH <br class="br-desktop"/>
+              <span class="hero__tagline"><span class="hero__gradient">Vững chắc</span> mọi công trình</span>
+            </h1>
+            <p class="hero__sub">
+              Chuyên tư vấn, thiết kế và thi công các hạng mục nhôm kính cao cấp, cửa nhôm Xingfa, kính cường lực tại Hải Phòng và các tỉnh lân cận.
+            </p>
+            <div class="hero__actions">
+              <button type="button" class="hero__btn-primary" data-scroll-to="#quote">
+                Nhận báo giá ngay <i data-lucide="chevron-right" class="lucide lucide--18"></i>
+              </button>
+              <button type="button" class="hero__btn-secondary" data-scroll-to="#projects">
+                <i data-lucide="play" class="lucide lucide--16"></i> Xem công trình thực tế
+              </button>
+            </div>
+          </div>
+          <div class="hero__stats">
+            <div class="hero__stat">
+              <div class="hero__stat-icon"><i data-lucide="award" class="lucide lucide--18"></i></div>
+              <div>
+                <div class="hero__stat-val">10+</div>
+                <div class="hero__stat-lab">Năm kinh nghiệm</div>
+              </div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-icon"><i data-lucide="building-2" class="lucide lucide--18"></i></div>
+              <div>
+                <div class="hero__stat-val">500+</div>
+                <div class="hero__stat-lab">Công trình</div>
+              </div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-icon"><i data-lucide="map-pin" class="lucide lucide--18"></i></div>
+              <div>
+                <div class="hero__stat-val">Toàn quốc</div>
+                <div class="hero__stat-lab">Thi công</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="hero__panel" aria-label="Cam kết dịch vụ">
+          <div class="hero__panel-title">Cam kết của An Bình</div>
+          <ul class="hero__panel-list">
+            <li>
+              <i data-lucide="shield-check" class="lucide lucide--20"></i>
+              <span>Bảo hành có phiếu, điều khoản rõ ràng — khách an tâm theo dõi công trình.</span>
+            </li>
+            <li>
+              <i data-lucide="ruler" class="lucide lucide--20"></i>
+              <span>Khảo sát &amp; đo đạc tại hiện trường trước khi báo giá chi tiết.</span>
+            </li>
+            <li>
+              <i data-lucide="package" class="lucide lucide--20"></i>
+              <span>Nhôm Xingfa, phụ kiện Kinlong đồng bộ — đúng chủng loại, đúng tiến độ.</span>
+            </li>
+          </ul>
+          <div class="hero__panel-foot">Hải Phòng · Thi công liên tỉnh theo yêu cầu</div>
+        </aside>
+      </div>
+    </div>
+    <div class="hero__dots">
+      <button type="button" class="hero__dot is-active" data-hero-dot="0" aria-label="Slide 1"></button>
+      <button type="button" class="hero__dot" data-hero-dot="1" aria-label="Slide 2"></button>
+      <button type="button" class="hero__dot" data-hero-dot="2" aria-label="Slide 3"></button>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about__wrap">
+      <div class="about__stage">
+        <div class="about__view" data-about-view="main">
+          <div class="about__grid">
+            <div class="about__img-wrap">
+              <div class="about__img-frame">
+                <img alt="Xưởng sản xuất nhôm kính An Bình" src="https://images.unsplash.com/photo-1599452547462-82d7f34e9167?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+              </div>
+              <div class="about__float">
+                <div class="about__float-num">500+</div>
+                <div class="about__float-lab">Công trình hoàn thành</div>
+              </div>
+            </div>
+            <div class="about__content">
+              <div class="pill"><span>Về chúng tôi</span></div>
+              <h2 class="about__h2">Chuyên gia nhôm kính <em>uy tín</em> tại Hải Phòng</h2>
+              <p class="about__p">
+                Với hơn 10 năm kinh nghiệm thi công tại TP. Hải Phòng và các khu vực lân cận, Nhôm Kính An Bình tự hào mang đến những sản phẩm bền vững, thẩm mỹ vượt trội cho mọi công trình.
+              </p>
+              <div class="about__list about__list--grid">
+                <div class="about__item">
+                  <div class="about__icon-box"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
+                  <div>
+                    <div class="about__item-title">Đội ngũ tay nghề cao</div>
+                    <div class="about__item-desc">Thợ thi công được đào tạo bài bản, kinh nghiệm 10+ năm thực chiến.</div>
+                  </div>
+                </div>
+                <div class="about__item">
+                  <div class="about__icon-box"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
+                  <div>
+                    <div class="about__item-title">Nhôm Xingfa chính hãng</div>
+                    <div class="about__item-desc">Sử dụng 100% vật liệu nhôm Xingfa, PMI, Topal nhập khẩu chính hãng.</div>
+                  </div>
+                </div>
+                <div class="about__item">
+                  <div class="about__icon-box"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
+                  <div>
+                    <div class="about__item-title">Thi công đúng tiến độ</div>
+                    <div class="about__item-desc">Cam kết bàn giao đúng thời hạn, không phát sinh chi phí ngoài hợp đồng.</div>
+                  </div>
+                </div>
+                <div class="about__item">
+                  <div class="about__icon-box"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
+                  <div>
+                    <div class="about__item-title">Bảo hành chuyên nghiệp</div>
+                    <div class="about__item-desc">Bảo hành 5 năm cho phụ kiện và 10 năm cho khung nhôm kính.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="about__btn-row">
+                <button type="button" class="about__btn about__btn--outline" data-about-show-experts>
+                  <i data-lucide="users" class="lucide lucide--18"></i>
+                  Thông tin các chuyên gia
+                </button>
+                <button type="button" class="about__btn" data-scroll-to="#quote">Liên hệ tư vấn ngay</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__view about__view--experts is-hidden" data-about-view="experts">
+          <div class="about-experts">
+            <button type="button" class="about-experts__back" data-about-show-main>
+              <i data-lucide="arrow-left" class="lucide lucide--18"></i>
+              Quay lại giới thiệu
+            </button>
+            <div class="about-experts__intro">
+              <div class="pill"><span>Đội ngũ</span></div>
+              <h2 class="about__h2">Chuyên gia <em>dẫn dắt</em> chất lượng</h2>
+              <p class="about__p about-experts__lead">Hai chuyên gia chủ chốt — <strong class="about-experts__hint-desktop">di chuột lên ảnh</strong><strong class="about-experts__hint-mobile">chạm ảnh</strong> để xem vai trò và chuyên môn chi tiết.</p>
+            </div>
+            <div class="about-experts__grid">
+              <article class="expert-card" tabindex="0" aria-expanded="false">
+                <div class="expert-card__media">
+                  <img class="expert-card__img" alt="CEO Founder — điều hành và kỹ thuật" draggable="false" th:src="@{/images/experts/expert-1.png}" src="/images/experts/expert-1.png"/>
+                  <div class="expert-card__overlay" aria-hidden="true">
+                    <h3 class="expert-card__name">CEO — Founder</h3>
+                    <p class="expert-card__role">Thợ chính · Thi công lắp đặt · Đo đạc · Kế toán</p>
+                    <ul class="expert-card__details">
+                      <li><strong>Vai trò:</strong> Thợ chính xưởng, trực tiếp thi công lắp đặt và đo đạc hiện trường.</li>
+                      <li><strong>Hậu cần:</strong> Theo dõi kế toán nội bộ — báo giá, chi phí và đối soát số liệu công trình.</li>
+                      <li><strong>Điều hành:</strong> Đồng sáng lập (foundation); định hướng kỹ thuật, tiến độ và chất lượng lắp đặt.</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+              <article class="expert-card" tabindex="0" aria-expanded="false">
+                <div class="expert-card__media">
+                  <img class="expert-card__img" alt="Founder Chủ tịch — phát triển khách hàng" draggable="false" th:src="@{/images/experts/expert-2.png}" src="/images/experts/expert-2.png"/>
+                  <div class="expert-card__overlay" aria-hidden="true">
+                    <h3 class="expert-card__name">Founder — Chủ tịch</h3>
+                    <p class="expert-card__role">Phát triển khách hàng · Kinh doanh · Đối ngoại</p>
+                    <ul class="expert-card__details">
+                      <li><strong>Nền tảng:</strong> Đồng sáng lập xưởng, đại diện pháp nhân và định hướng chiến lược.</li>
+                      <li><strong>Chức danh:</strong> Chủ tịch — chịu trách nhiệm quan hệ đối tác và phát triển thị trường.</li>
+                      <li><strong>Thế mạnh:</strong> Chuyên tìm kiếm khách hàng, chăm sóc hợp đồng và mở rộng nguồn việc.</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products" id="products">
+    <div class="products__wrap">
+      <div class="section-head section-head--split">
+        <div class="section-head__main">
+          <div class="pill"><span>Danh mục sản phẩm</span></div>
+          <h2>Sản phẩm &amp; Dịch vụ</h2>
+        </div>
+        <p class="section-head__lede">Đầy đủ giải pháp nhôm kính cho mọi loại công trình, từ dân dụng đến thương mại — thiết kế gọn gàng, bền vững theo thời gian.</p>
+      </div>
+      <div class="products__grid">
+        <article class="product-card product-card--featured">
+          <div class="product-card__media">
+            <img class="product-card__img" alt="Cửa nhôm Xingfa" src="https://images.unsplash.com/photo-1757264119066-2f627c6a6f03?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+            <span class="product-card__tag product-card__tag--default">Phổ biến</span>
+          </div>
+          <div class="product-card__body">
+            <h3>Cửa nhôm Xingfa</h3>
+            <p class="product-card__desc">Cửa nhôm Xingfa chính hãng nhập khẩu, phụ kiện Kinlong đồng bộ, bảo hành lên đến 10 năm.</p>
+            <button type="button" class="product-card__link">Xem chi tiết <i data-lucide="arrow-right" class="lucide lucide--15"></i></button>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card__media">
+            <img class="product-card__img" alt="Vách kính cường lực" src="https://images.unsplash.com/photo-1630756400365-e454e412e778?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+            <span class="product-card__tag product-card__tag--hot">Hot</span>
+          </div>
+          <div class="product-card__body">
+            <h3>Vách kính cường lực</h3>
+            <p class="product-card__desc">Vách kính cường lực 10-12mm cho văn phòng, showroom, tạo không gian sang trọng và hiện đại.</p>
+            <button type="button" class="product-card__link">Xem chi tiết <i data-lucide="arrow-right" class="lucide lucide--15"></i></button>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card__media">
+            <img class="product-card__img" alt="Lan can &amp; Cầu thang kính" src="https://images.unsplash.com/photo-1764428950485-89462b447f90?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+          </div>
+          <div class="product-card__body">
+            <h3>Lan can &amp; Cầu thang kính</h3>
+            <p class="product-card__desc">Lan can kính tay vịn inox hoặc gỗ, cầu thang kính cường lực an toàn, thẩm mỹ cao cho biệt thự.</p>
+            <button type="button" class="product-card__link">Xem chi tiết <i data-lucide="arrow-right" class="lucide lucide--15"></i></button>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card__media">
+            <img class="product-card__img" alt="Mái kính &amp; Giếng trời" src="https://images.unsplash.com/photo-1776617130240-c43e75ea5d19?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+            <span class="product-card__tag product-card__tag--new">Mới</span>
+          </div>
+          <div class="product-card__body">
+            <h3>Mái kính &amp; Giếng trời</h3>
+            <p class="product-card__desc">Mái kính cường lực khung sắt nghệ thuật hoặc nhôm, lấy sáng tự nhiên, chống thấm tuyệt đối.</p>
+            <button type="button" class="product-card__link">Xem chi tiết <i data-lucide="arrow-right" class="lucide lucide--15"></i></button>
+          </div>
+        </article>
+      </div>
+      <div class="products__mobile-cta">
+        <button type="button">Xem tất cả sản phẩm</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <div class="projects__wrap">
+      <div class="section-head section-head--split section-head--proj">
+        <div class="section-head__main">
+          <div class="pill"><span>Công trình tiêu biểu</span></div>
+          <h2>Những công trình nổi bật</h2>
+        </div>
+        <p class="section-head__lede">Hơn 500 công trình đã thi công trên toàn quốc — từ biệt thự cao cấp đến cao ốc thương mại và khu công nghiệp.</p>
+      </div>
+
+      <div class="projects-desktop">
+        <article class="proj-card proj-card--hero">
+          <img class="proj-card__img" alt="" src="https://images.unsplash.com/photo-1757264119066-2f627c6a6f03?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+          <div class="proj-card__grad"></div>
+          <div class="proj-card__body">
+            <h3>Vinhomes Marina Hải Phòng</h3>
+            <div class="proj-card__meta">
+              <span><i data-lucide="map-pin" class="lucide lucide--13"></i> Lê Chân, Hải Phòng</span>
+              <span><i data-lucide="layers" class="lucide lucide--13"></i> Cửa nhôm Xingfa &amp; Kính cường lực</span>
+            </div>
+          </div>
+          <div class="proj-card__eye"><i data-lucide="eye" class="lucide lucide--18"></i></div>
+        </article>
+        <article class="proj-card">
+          <img class="proj-card__img" alt="" src="https://images.unsplash.com/photo-1630756400365-e454e412e778?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+          <div class="proj-card__grad"></div>
+          <div class="proj-card__body">
+            <h3>Tòa nhà Văn phòng Cảng</h3>
+            <div class="proj-card__meta">
+              <span><i data-lucide="map-pin" class="lucide lucide--13"></i> Hồng Bàng, Hải Phòng</span>
+              <span><i data-lucide="layers" class="lucide lucide--13"></i> Vách kính Curtain Wall</span>
+            </div>
+          </div>
+          <div class="proj-card__eye"><i data-lucide="eye" class="lucide lucide--18"></i></div>
+        </article>
+        <article class="proj-card">
+          <img class="proj-card__img" alt="" src="https://images.unsplash.com/photo-1764428950485-89462b447f90?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+          <div class="proj-card__grad"></div>
+          <div class="proj-card__body">
+            <h3>Biệt thự Việt Phát</h3>
+            <div class="proj-card__meta">
+              <span><i data-lucide="map-pin" class="lucide lucide--13"></i> Vĩnh Niệm, Hải Phòng</span>
+              <span><i data-lucide="layers" class="lucide lucide--13"></i> Lan can &amp; Mái kính lấy sáng</span>
+            </div>
+          </div>
+          <div class="proj-card__eye"><i data-lucide="eye" class="lucide lucide--18"></i></div>
+        </article>
+        <article class="proj-card">
+          <img class="proj-card__img" alt="" src="https://images.unsplash.com/photo-1758998256408-ab2c9fbec19b?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+          <div class="proj-card__grad"></div>
+          <div class="proj-card__body">
+            <h3>Showroom Ô tô Hải An</h3>
+            <div class="proj-card__meta">
+              <span><i data-lucide="map-pin" class="lucide lucide--13"></i> Quận Hải An, Hải Phòng</span>
+              <span><i data-lucide="layers" class="lucide lucide--13"></i> Kính khổ lớn thương mại</span>
+            </div>
+          </div>
+          <div class="proj-card__eye"><i data-lucide="eye" class="lucide lucide--18"></i></div>
+        </article>
+        <article class="proj-card">
+          <img class="proj-card__img" alt="" src="https://images.unsplash.com/photo-1636142500824-564df0c3846a?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+          <div class="proj-card__grad"></div>
+          <div class="proj-card__body">
+            <h3>Chung cư Hoàng Huy Commerce</h3>
+            <div class="proj-card__meta">
+              <span><i data-lucide="map-pin" class="lucide lucide--13"></i> Kênh Dương, Hải Phòng</span>
+              <span><i data-lucide="layers" class="lucide lucide--13"></i> Hệ thống cửa sổ &amp; Ban công</span>
+            </div>
+          </div>
+          <div class="proj-card__eye"><i data-lucide="eye" class="lucide lucide--18"></i></div>
+        </article>
+        <article class="proj-card">
+          <img class="proj-card__img" alt="" src="https://images.unsplash.com/photo-1599452547462-82d7f34e9167?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+          <div class="proj-card__grad"></div>
+          <div class="proj-card__body">
+            <h3>KCN VSIP Hải Phòng</h3>
+            <div class="proj-card__meta">
+              <span><i data-lucide="map-pin" class="lucide lucide--13"></i> Thủy Nguyên, Hải Phòng</span>
+              <span><i data-lucide="layers" class="lucide lucide--13"></i> Cửa nhôm công nghiệp</span>
+            </div>
+          </div>
+          <div class="proj-card__eye"><i data-lucide="eye" class="lucide lucide--18"></i></div>
+        </article>
+      </div>
+
+      <div class="projects-mobile">
+        <div class="projects-mobile__scroll">
+          <div class="proj-card-m proj-card">
+            <img alt="" src="https://images.unsplash.com/photo-1757264119066-2f627c6a6f03?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+            <div class="proj-card__grad"></div>
+            <div class="proj-card__body">
+              <h3>Vinhomes Marina Hải Phòng</h3>
+              <div class="proj-card__meta"><span><i data-lucide="map-pin" class="lucide lucide--11"></i> Lê Chân, Hải Phòng</span></div>
+            </div>
+          </div>
+          <div class="proj-card-m proj-card">
+            <img alt="" src="https://images.unsplash.com/photo-1630756400365-e454e412e778?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+            <div class="proj-card__grad"></div>
+            <div class="proj-card__body">
+              <h3>Tòa nhà Văn phòng Cảng</h3>
+              <div class="proj-card__meta"><span><i data-lucide="map-pin" class="lucide lucide--11"></i> Hồng Bàng, Hải Phòng</span></div>
+            </div>
+          </div>
+          <div class="proj-card-m proj-card">
+            <img alt="" src="https://images.unsplash.com/photo-1764428950485-89462b447f90?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+            <div class="proj-card__grad"></div>
+            <div class="proj-card__body">
+              <h3>Biệt thự Việt Phát</h3>
+              <div class="proj-card__meta"><span><i data-lucide="map-pin" class="lucide lucide--11"></i> Vĩnh Niệm, Hải Phòng</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="projects-mobile__grid">
+          <div class="proj-card-ms proj-card">
+            <img alt="" src="https://images.unsplash.com/photo-1758998256408-ab2c9fbec19b?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+            <div class="proj-card__grad"></div>
+            <div class="proj-card__body">
+              <h3>Showroom Ô tô Hải An</h3>
+              <div class="proj-card__meta"><span><i data-lucide="map-pin" class="lucide lucide--10"></i> Quận Hải An, Hải Phòng</span></div>
+            </div>
+          </div>
+          <div class="proj-card-ms proj-card">
+            <img alt="" src="https://images.unsplash.com/photo-1636142500824-564df0c3846a?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+            <div class="proj-card__grad"></div>
+            <div class="proj-card__body">
+              <h3>Chung cư Hoàng Huy Commerce</h3>
+              <div class="proj-card__meta"><span><i data-lucide="map-pin" class="lucide lucide--10"></i> Kênh Dương, Hải Phòng</span></div>
+            </div>
+          </div>
+          <div class="proj-card-ms proj-card">
+            <img alt="" src="https://images.unsplash.com/photo-1599452547462-82d7f34e9167?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;q=80&amp;w=1080"/>
+            <div class="proj-card__grad"></div>
+            <div class="proj-card__body">
+              <h3>KCN VSIP Hải Phòng</h3>
+              <div class="proj-card__meta"><span><i data-lucide="map-pin" class="lucide lucide--10"></i> Thủy Nguyên, Hải Phòng</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects__more">
+        <button type="button">Xem tất cả công trình</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div class="process__wrap">
+      <div class="section-head">
+        <div class="pill process__pill"><span>Quy trình làm việc</span></div>
+        <h2>5 bước làm việc chuyên nghiệp</h2>
+        <p>Quy trình minh bạch, chuyên nghiệp đảm bảo mọi công trình được thực hiện đúng chuẩn.</p>
+      </div>
+
+      <div class="process-desktop">
+        <div class="process-desktop__line"></div>
+        <div class="process-desktop__grid">
+          <div class="process-step-d">
+            <div class="process-step-d__circle">
+              <i data-lucide="message-square" class="lucide lucide--24"></i>
+              <span class="process-step-d__num">1</span>
+            </div>
+            <h3>Tiếp nhận yêu cầu</h3>
+            <p>Khách hàng liên hệ qua điện thoại, zalo, hoặc trực tiếp. Chúng tôi lắng nghe và tư vấn giải pháp phù hợp nhất.</p>
+          </div>
+          <div class="process-step-d">
+            <div class="process-step-d__circle">
+              <i data-lucide="ruler" class="lucide lucide--24"></i>
+              <span class="process-step-d__num">2</span>
+            </div>
+            <h3>Khảo sát thực tế</h3>
+            <p>Đội kỹ thuật đến khảo sát tại công trình, đo đạc chính xác và đánh giá điều kiện thi công.</p>
+          </div>
+          <div class="process-step-d">
+            <div class="process-step-d__circle">
+              <i data-lucide="file-text" class="lucide lucide--24"></i>
+              <span class="process-step-d__num">3</span>
+            </div>
+            <h3>Báo giá &amp; Ký hợp đồng</h3>
+            <p>Gửi báo giá chi tiết, minh bạch trong 24 giờ. Ký hợp đồng với điều khoản rõ ràng, bảo vệ quyền lợi hai bên.</p>
+          </div>
+          <div class="process-step-d">
+            <div class="process-step-d__circle">
+              <i data-lucide="hammer" class="lucide lucide--24"></i>
+              <span class="process-step-d__num">4</span>
+            </div>
+            <h3>Thi công</h3>
+            <p>Đội thợ tay nghề cao thi công theo đúng kỹ thuật, đảm bảo tiến độ và chất lượng cam kết.</p>
+          </div>
+          <div class="process-step-d">
+            <div class="process-step-d__circle">
+              <i data-lucide="check-square" class="lucide lucide--24"></i>
+              <span class="process-step-d__num">5</span>
+            </div>
+            <h3>Bàn giao &amp; Bảo hành</h3>
+            <p>Nghiệm thu công trình cùng khách hàng, hướng dẫn sử dụng và cấp phiếu bảo hành đầy đủ.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-mobile">
+        <div class="process-mobile__line"></div>
+        <div class="process-mobile__steps">
+          <div class="process-step-m">
+            <div class="process-step-m__circle">
+              <i data-lucide="message-square" class="lucide lucide--24"></i>
+              <span class="process-step-m__num">1</span>
+            </div>
+            <div class="process-step-m__card">
+              <h3>Tiếp nhận yêu cầu</h3>
+              <p>Khách hàng liên hệ qua điện thoại, zalo, hoặc trực tiếp. Chúng tôi lắng nghe và tư vấn giải pháp phù hợp nhất.</p>
+            </div>
+          </div>
+          <div class="process-step-m">
+            <div class="process-step-m__circle">
+              <i data-lucide="ruler" class="lucide lucide--24"></i>
+              <span class="process-step-m__num">2</span>
+            </div>
+            <div class="process-step-m__card">
+              <h3>Khảo sát thực tế</h3>
+              <p>Đội kỹ thuật đến khảo sát tại công trình, đo đạc chính xác và đánh giá điều kiện thi công.</p>
+            </div>
+          </div>
+          <div class="process-step-m">
+            <div class="process-step-m__circle">
+              <i data-lucide="file-text" class="lucide lucide--24"></i>
+              <span class="process-step-m__num">3</span>
+            </div>
+            <div class="process-step-m__card">
+              <h3>Báo giá &amp; Ký hợp đồng</h3>
+              <p>Gửi báo giá chi tiết, minh bạch trong 24 giờ. Ký hợp đồng với điều khoản rõ ràng, bảo vệ quyền lợi hai bên.</p>
+            </div>
+          </div>
+          <div class="process-step-m">
+            <div class="process-step-m__circle">
+              <i data-lucide="hammer" class="lucide lucide--24"></i>
+              <span class="process-step-m__num">4</span>
+            </div>
+            <div class="process-step-m__card">
+              <h3>Thi công</h3>
+              <p>Đội thợ tay nghề cao thi công theo đúng kỹ thuật, đảm bảo tiến độ và chất lượng cam kết.</p>
+            </div>
+          </div>
+          <div class="process-step-m">
+            <div class="process-step-m__circle">
+              <i data-lucide="check-square" class="lucide lucide--24"></i>
+              <span class="process-step-m__num">5</span>
+            </div>
+            <div class="process-step-m__card">
+              <h3>Bàn giao &amp; Bảo hành</h3>
+              <p>Nghiệm thu công trình cùng khách hàng, hướng dẫn sử dụng và cấp phiếu bảo hành đầy đủ.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="estimate" id="estimate" data-estimator>
+    <div class="estimate__inner">
+      <div class="estimate__head estimate__head--split">
+        <div class="estimate__head-main">
+          <div class="estimate__pill">
+            <i data-lucide="calculator" class="lucide lucide--16"></i> CÔNG CỤ TÍNH TOÁN
+          </div>
+          <h2>Dự toán chi phí thi công</h2>
+        </div>
+        <p class="estimate__head-lede">Nhập diện tích để có con số tham khảo ngay — sau đó đội ngũ sẽ hiệu chỉnh theo hiện trường và loại phụ kiện.</p>
+      </div>
+      <div class="estimate__card">
+        <div class="estimate__decoration"></div>
+        <div>
+          <div style="margin-bottom:24px">
+            <label class="estimate__label">Chọn loại hạng mục</label>
+            <div class="estimate__opts">
+              <button type="button" class="estimate__opt is-selected" data-est-opt="xingfa-window">
+                Cửa sổ nhôm Xingfa
+              </button>
+              <button type="button" class="estimate__opt" data-est-opt="xingfa-door">Cửa đi nhôm Xingfa</button>
+              <button type="button" class="estimate__opt" data-est-opt="tempered-glass">Kính cường lực (10mm)</button>
+              <button type="button" class="estimate__opt" data-est-opt="glass-railing">Lan can kính</button>
+            </div>
+          </div>
+          <div>
+            <label class="estimate__label">Diện tích / Chiều dài (<span data-est-unit-label>m²</span>)</label>
+            <div class="estimate__field-wrap">
+              <input type="number" value="10" min="0" step="0.1" data-est-area/>
+              <span class="estimate__unit" data-est-unit-suffix>m²</span>
+            </div>
+          </div>
+        </div>
+        <div class="estimate__result">
+          <div class="estimate__result-label">Tổng chi phí dự tính</div>
+          <div class="estimate__result-val" data-est-amount>0&nbsp;₫</div>
+          <div class="estimate__divider"></div>
+          <div class="estimate__note">
+            <i data-lucide="info" class="lucide lucide--20"></i>
+            <p>* Đơn giá đã bao gồm phụ kiện Kinlong chính hãng và nhân công lắp đặt tại Hải Phòng. Giá có thể thay đổi tùy theo khối lượng và thiết kế chi tiết.</p>
+          </div>
+          <button type="button" class="estimate__cta" data-scroll-to="#quote">
+            Liên hệ tư vấn chi tiết <i data-lucide="chevron-right" class="lucide lucide--18"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote" id="quote">
+    <div class="quote__wrap">
+      <div class="quote__grid">
+        <div class="quote__intro">
+          <div class="pill"><span>Nhận báo giá</span></div>
+          <h2 class="quote__title">Báo giá miễn phí <em class="quote__title-accent">trong 24 giờ</em></h2>
+          <p class="quote__intro-p">
+            Điền thông tin để nhận báo giá chi tiết từ đội ngũ tư vấn chuyên nghiệp. Hoàn toàn miễn phí, không ràng buộc.
+          </p>
+          <div class="quote__trust">
+            <div class="quote__trust-item">
+              <div class="quote__trust-icon"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
+              <div>
+                <div class="quote__trust-title">Tư vấn miễn phí</div>
+                <div class="quote__trust-desc">Không mất chi phí tư vấn và lập báo giá</div>
+              </div>
+            </div>
+            <div class="quote__trust-item">
+              <div class="quote__trust-icon"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
+              <div>
+                <div class="quote__trust-title">Phản hồi trong 24h</div>
+                <div class="quote__trust-desc">Đội ngũ tư vấn phản hồi nhanh chóng</div>
+              </div>
+            </div>
+            <div class="quote__trust-item">
+              <div class="quote__trust-icon"><i data-lucide="check-circle-2" class="lucide lucide--18"></i></div>
+              <div>
+                <div class="quote__trust-title">Cam kết bảo mật</div>
+                <div class="quote__trust-desc">Thông tin khách hàng được bảo mật tuyệt đối</div>
+              </div>
+            </div>
+          </div>
+          <div class="quote__hotline">
+            <div class="quote__hotline-icon">📞</div>
+            <div>
+              <small>Hotline tư vấn 24/7</small>
+              <a th:href="${page.hotlineTelHref}" href="tel:" th:text="${page.hotlineDisplay}">0984 936 989</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote__form-card">
+          <h3>Điền thông tin nhận báo giá</h3>
+          <form data-quote-form novalidate>
+            <div class="quote__fields-row">
+              <div class="quote__field">
+                <label>Họ và tên <span class="req">*</span></label>
+                <input class="quote__input" type="text" name="fullName" placeholder="Nguyễn Văn A" autocomplete="name"/>
+                <p class="quote__err" data-field-error="fullName" style="display:none">Vui lòng nhập họ tên</p>
+              </div>
+              <div class="quote__field">
+                <label>Số điện thoại <span class="req">*</span></label>
+                <input class="quote__input" type="tel" name="phone" placeholder="0984 936 989" autocomplete="tel"/>
+                <p class="quote__err" data-field-error="phoneReq" style="display:none">Vui lòng nhập số điện thoại</p>
+                <p class="quote__err" data-field-error="phoneBad" style="display:none">Số điện thoại không hợp lệ</p>
+              </div>
+            </div>
+            <div class="quote__field" style="margin-bottom:14px">
+              <label>Loại công trình <span class="req">*</span></label>
+              <select class="quote__input" name="constructionType">
+                <option value="">-- Chọn loại công trình --</option>
+                <option>Cửa nhôm kính</option>
+                <option>Vách kính cường lực</option>
+                <option>Cửa lùa nhôm kính</option>
+                <option>Cabin phòng tắm kính</option>
+                <option>Lan can kính</option>
+                <option>Mái kính – Giếng trời</option>
+                <option>Mặt dựng curtain wall</option>
+                <option>Khác</option>
+              </select>
+              <p class="quote__err" data-field-error="constructionType" style="display:none">Vui lòng chọn loại công trình</p>
+            </div>
+            <div class="quote__field" style="margin-bottom:14px">
+              <label>Diện tích ước tính (m²)</label>
+              <input class="quote__input" type="text" name="area" placeholder="Ví dụ: 50m², 100m²"/>
+            </div>
+            <div class="quote__field" style="margin-bottom:24px">
+              <label>Nội dung yêu cầu</label>
+              <textarea class="quote__input" name="message" rows="4" placeholder="Mô tả yêu cầu, địa chỉ công trình, thời gian dự kiến..."></textarea>
+            </div>
+            <button type="submit" class="quote__submit">
+              <span data-submit-idle style="display:flex;align-items:center;gap:10px">
+                <i data-lucide="send" class="lucide lucide--18"></i> Gửi yêu cầu báo giá
+              </span>
+              <span data-submit-load style="display:none;align-items:center;gap:10px">
+                <i data-lucide="loader-2" class="lucide lucide--18 spin"></i> Đang gửi...
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" data-success-modal aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal">
+        <div class="modal__handle show-mobile-only"></div>
+        <button type="button" class="modal__close" data-modal-close aria-label="Đóng">
+          <i data-lucide="x" class="lucide lucide--16"></i>
+        </button>
+        <div class="modal__icon"><i data-lucide="check-circle-2" class="lucide lucide--36"></i></div>
+        <h3>Gửi yêu cầu thành công!</h3>
+        <p>Cảm ơn <strong style="color:#0F172A"><span data-modal-name>bạn</span></strong>! Chúng tôi sẽ liên hệ lại trong vòng <strong style="color:#F97316">24 giờ</strong>.</p>
+        <button type="button" class="modal__btn" data-modal-close>Đóng</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners">
+    <div class="partners__wrap">
+      <div class="partners__head partners__head--split">
+        <div class="partners__head-main">
+          <p class="partners__label">Đối tác &amp; Thương hiệu</p>
+          <h2>Vật liệu từ thương hiệu <span class="partners__head-accent">uy tín toàn cầu</span></h2>
+        </div>
+        <p class="partners__head-lede">Hệ vật liệu nhập khẩu đồng bộ giúp cửa kính vận hành êm, kín khít và giữ vẻ đẹp lâu dài.</p>
+      </div>
+      <div class="partners__grid">
+        <div class="partner-card"><div class="partner-card__logo">XI</div><div class="partner-card__name">Xingfa</div><div class="partner-card__desc">Hệ nhôm cao cấp</div></div>
+        <div class="partner-card"><div class="partner-card__logo">PM</div><div class="partner-card__name">PMI</div><div class="partner-card__desc">Nhôm nhập khẩu Malaysia</div></div>
+        <div class="partner-card"><div class="partner-card__logo">TO</div><div class="partner-card__name">Topal</div><div class="partner-card__desc">Hệ thống cửa Austdoor</div></div>
+        <div class="partner-card"><div class="partner-card__logo">KI</div><div class="partner-card__name">Kinlong</div><div class="partner-card__desc">Phụ kiện đồng bộ</div></div>
+        <div class="partner-card"><div class="partner-card__logo">VI</div><div class="partner-card__name">Việt Pháp</div><div class="partner-card__desc">Nhôm tiêu chuẩn Pháp</div></div>
+        <div class="partner-card"><div class="partner-card__logo">HA</div><div class="partner-card__name">Hafele</div><div class="partner-card__desc">Phụ kiện cao cấp Đức</div></div>
+      </div>
+      <div class="partners__stats">
+        <div><div class="partners__stats-val">500+</div><div class="partners__stats-lab">Công trình hoàn thành</div></div>
+        <div><div class="partners__stats-val">10+</div><div class="partners__stats-lab">Năm kinh nghiệm</div></div>
+        <div><div class="partners__stats-val">50+</div><div class="partners__stats-lab">Thợ tay nghề cao</div></div>
+        <div><div class="partners__stats-val">98%</div><div class="partners__stats-lab">Khách hàng hài lòng</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" id="contact">
+    <div class="footer__cta-band">
+      <div class="footer__cta-inner">
+        <div>
+          <h3>Bạn cần tư vấn thiết kế nhôm kính?</h3>
+          <p>Liên hệ ngay – nhận báo giá miễn phí trong 24 giờ</p>
+        </div>
+        <div class="footer__cta-actions">
+          <a href="tel:0901234567" class="footer__cta-call"><i data-lucide="phone" class="lucide lucide--16"></i> Gọi ngay</a>
+          <button type="button" class="footer__cta-quote" data-scroll-to="#quote">Nhận báo giá</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__main">
+      <div class="footer-mobile">
+        <div class="footer-mobile__brand">
+          <div class="footer-mobile__brand-row">
+            <div class="footer-mobile__mark">AB</div>
+            <div>
+              <strong>NHÔM KÍNH AN BÌNH</strong>
+              <span>Hải Phòng</span>
+            </div>
+          </div>
+          <p>Chuyên cung cấp và thi công nhôm kính cao cấp với đội ngũ thợ trên 10 năm kinh nghiệm, vật liệu chính hãng và dịch vụ bảo hành chuyên nghiệp.</p>
+          <div class="footer-mobile__social">
+            <a href="#" aria-label="Facebook"><i data-lucide="facebook" class="lucide lucide--16"></i></a>
+            <a href="#" aria-label="Youtube"><i data-lucide="youtube" class="lucide lucide--16"></i></a>
+            <a href="#" aria-label="Zalo"><i data-lucide="message-circle" class="lucide lucide--16"></i></a>
+          </div>
+        </div>
+        <div class="footer-mobile__contact">
+          <h4>Liên hệ</h4>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <a th:href="${page.hotlineTelHref}" href="tel:" style="display:flex;gap:12px;align-items:center;text-decoration:none">
+              <div class="footer-contact-icon"><i data-lucide="phone" class="lucide lucide--15"></i></div>
+              <div>
+                <small style="color:#94A3B8;font-size:11px;display:block">Hotline</small>
+                <span style="color:#F97316;font-weight:800;font-size:17px" th:text="${page.hotlineDisplay}">0984 936 989</span>
+              </div>
+            </a>
+            <div style="display:flex;gap:12px;align-items:center">
+              <div class="footer-contact-icon"><i data-lucide="mail" class="lucide lucide--15"></i></div>
+              <div>
+                <small style="color:#94A3B8;font-size:11px;display:block">Email</small>
+                <span style="color:#CBD5E1;font-size:14px" th:text="${page.email}">email</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div class="footer-contact-icon"><i data-lucide="map-pin" class="lucide lucide--15"></i></div>
+              <div>
+                <small style="color:#94A3B8;font-size:11px;display:block">Địa chỉ</small>
+                <span style="color:#CBD5E1;font-size:13px;line-height:1.5" th:text="${page.addressLine}">Địa chỉ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-mobile__qlinks">
+          <a href="#home"><i data-lucide="chevron-right" class="lucide lucide--13" style="color:#F97316"></i> Trang chủ</a>
+          <a href="#about"><i data-lucide="chevron-right" class="lucide lucide--13" style="color:#F97316"></i> Giới thiệu</a>
+          <a href="#products"><i data-lucide="chevron-right" class="lucide lucide--13" style="color:#F97316"></i> Sản phẩm</a>
+          <a href="#projects"><i data-lucide="chevron-right" class="lucide lucide--13" style="color:#F97316"></i> Công trình</a>
+          <a href="#process"><i data-lucide="chevron-right" class="lucide lucide--13" style="color:#F97316"></i> Quy trình</a>
+          <a href="#quote"><i data-lucide="chevron-right" class="lucide lucide--13" style="color:#F97316"></i> Báo giá</a>
+        </div>
+      </div>
+
+      <div class="footer-desktop">
+        <div>
+          <div class="footer-brand__row">
+            <div class="footer-brand__mark">AB</div>
+            <div>
+              <div class="footer-brand__title">NHÔM KÍNH AN BÌNH</div>
+              <div class="footer-brand__sub">Hải Phòng</div>
+            </div>
+          </div>
+          <p>Chuyên cung cấp và thi công nhôm kính cao cấp với đội ngũ thợ trên 10 năm kinh nghiệm, vật liệu chính hãng từ Xingfa, PMI, Topal.</p>
+          <div class="footer-social">
+            <a href="#" data-soc="fb" aria-label="Facebook"><i data-lucide="facebook" class="lucide lucide--16"></i></a>
+            <a href="#" data-soc="yt" aria-label="Youtube"><i data-lucide="youtube" class="lucide lucide--16"></i></a>
+            <a href="#" data-soc="zalo" aria-label="Zalo"><i data-lucide="message-circle" class="lucide lucide--16"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Liên kết nhanh</h4>
+          <div class="footer-links">
+            <a href="#home"><i data-lucide="chevron-right" class="lucide lucide--13"></i> Trang chủ</a>
+            <a href="#about"><i data-lucide="chevron-right" class="lucide lucide--13"></i> Giới thiệu</a>
+            <a href="#products"><i data-lucide="chevron-right" class="lucide lucide--13"></i> Sản phẩm</a>
+            <a href="#projects"><i data-lucide="chevron-right" class="lucide lucide--13"></i> Công trình</a>
+            <a href="#process"><i data-lucide="chevron-right" class="lucide lucide--13"></i> Quy trình</a>
+            <a href="#quote"><i data-lucide="chevron-right" class="lucide lucide--13"></i> Báo giá</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Sản phẩm</h4>
+          <div class="footer-links">
+            <a href="#products"><i data-lucide="chevron-right" class="lucide lucide--13"></i> Cửa nhôm kính</a>
+            <a href="#products"><i data-lucide="chevron-right" class="lucide lucide--13"></i> Vách kính cường lực</a>
+            <a href="#products"><i data-lucide="chevron-right" class="lucide lucide--13"></i> Cửa lùa nhôm</a>
+            <a href="#products"><i data-lucide="chevron-right" class="lucide lucide--13"></i> Cabin phòng tắm</a>
+            <a href="#products"><i data-lucide="chevron-right" class="lucide lucide--13"></i> Lan can kính</a>
+            <a href="#products"><i data-lucide="chevron-right" class="lucide lucide--13"></i> Mái kính – Giếng trời</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Liên hệ</h4>
+          <div class="footer-contact-block">
+            <div class="footer-contact-row">
+              <div class="footer-contact-icon"><i data-lucide="map-pin" class="lucide lucide--14"></i></div>
+              <div>
+                <small>Địa chỉ</small>
+                <div class="footer-contact-text" th:text="${page.addressLine}">Đội 8, An Phú, TP. Hải Phòng</div>
+              </div>
+            </div>
+            <div class="footer-contact-row footer-contact-row--center">
+              <div class="footer-contact-icon"><i data-lucide="phone" class="lucide lucide--14"></i></div>
+              <div>
+                <small>Hotline</small>
+                <a th:href="${page.hotlineTelHref}" href="tel:" class="footer-phone" th:text="${page.hotlineDisplay}">0984 936 989</a>
+              </div>
+            </div>
+            <div class="footer-contact-row footer-contact-row--center">
+              <div class="footer-contact-icon"><i data-lucide="mail" class="lucide lucide--14"></i></div>
+              <div>
+                <small>Email</small>
+                <a th:href="|mailto:${page.email}|" href="mailto:" class="footer-contact-text" th:text="${page.email}">email</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__bottom-inner">
+        <p>© 2026 Nhôm Kính An Bình - Hải Phòng. All rights reserved.</p>
+        <div class="footer__bottom-links">
+          <a href="#">Chính sách bảo mật</a>
+          <a href="#">Điều khoản dịch vụ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a th:href="${page.hotlineTelHref}" href="tel:" class="float-call" title="Gọi ngay" aria-label="Gọi hotline">📞</a>
+</div>
+
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<script th:src="@{/js/app.js}" src="/js/app.js"></script>
+</body>
+</html>
